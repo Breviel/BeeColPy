@@ -142,6 +142,10 @@ solution = abc_obj.get_solution()
         high amount of food sources and/or iterations, this option
         drastically increases memory usage.
 
+    [callback] : callable --optinal-- (default: None)
+        if not None callback function will be called at the end of each
+        iteration in the fit function. Useful for showing values as they
+        change.
 
     [seed] : Int --optional-- (default: None)
         If defined as an int, set the seed used in all random process.
