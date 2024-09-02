@@ -216,8 +216,8 @@ class abc:
                  nan_protection: bool=True,
                  log_agents: bool=False,
                  seed: int=None
-                 callback=None):
-
+                 callback: callable=None):
+                 
         self.boundaries = boundaries
         self.min_max_selector = min_max
         self.cost_function = function
