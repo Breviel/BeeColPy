@@ -215,7 +215,8 @@ class abc:
                  min_max: str='min',
                  nan_protection: bool=True,
                  log_agents: bool=False,
-                 seed: int=None):
+                 seed: int=None
+                 callback=None):
 
         self.boundaries = boundaries
         self.min_max_selector = min_max
@@ -224,6 +225,7 @@ class abc:
         self.log_agents = log_agents
         self.reset_agents = False
         self.seed = seed
+        self.callback = callback
 
         self.max_iterations = int(max([iterations, 1]))
         if (iterations < 1):
@@ -307,6 +309,10 @@ class abc:
             self.iteration_status += 1
             if self.log_agents:
                 self.agents.append([food.position for food in self.foods])
+            
+            # Callback for monitoring values as they change
+            if self.callback is not None:
+                self.callback(self.best_food_source.position)
 
         return self.best_food_source.position
 
